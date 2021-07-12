@@ -9,5 +9,5 @@ composer require inltd/lij-tool
 
 使用:
 ```php
-use lij/date/DateCalculation as DateCal;
+use \lij\date\DateCalculation as DateCal;
 ```
