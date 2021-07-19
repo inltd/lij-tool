@@ -41,6 +41,13 @@ class DateCalculation{
         $age = self::date_subtraction($birth_Date,date('Y-m-d'))["year"];
         return $age;
     }
+	public static function get_date_add_num($datestr,$num){
+		$n = (int)$num<0?(int)$num:'+'.(int)$num;
+		return date('Y-m-d',strtotime($n.' day',strtotime($datestr)));
+	}
+	public static function get_date_week_num($datestr){
+		return date('w',strtotime($datestr));
+	}
 }
 
 ?>

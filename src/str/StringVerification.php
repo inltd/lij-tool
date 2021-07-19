@@ -25,6 +25,7 @@ class StringVerification{
     public static function is_zero($zero){
         return (string)$zero==='0'?true:false;
     }
+
 }
 
 ?>
