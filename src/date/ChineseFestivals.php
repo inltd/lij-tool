@@ -64,7 +64,7 @@ class ChineseFestivals{
     }
     public function get_next_week_work_days(){
         $base_date = $this->format_date_str;
-        $first_date = dc::get_date_add_num($base_date,8-dc::get_date_week_num($base_date));
+        $first_date = dc::get_date_add_num($base_date,7-dc::get_date_week_num($base_date));
         $work_date_list = [];
         $work_date = $first_date;
         for($i=1;$i<8;$i++){
