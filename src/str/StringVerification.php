@@ -21,6 +21,10 @@ class StringVerification{
     public static function is_jdbh($str){
         return preg_match('/^[a-zA-Z][-a-zA-Z0-9]{9,17}$/i',$str)?true:false;
     }
+
+    public static function is_zero($zero){
+        return (string)$zero==='0'?true:false;
+    }
 }
 
 ?>

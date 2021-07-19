@@ -1,5 +1,7 @@
 <?php
 namespace lij\date;
+use lij\str\StringVerification as sv;
+
 
 class ChineseFestivals{
     private $data_path;
@@ -55,7 +57,7 @@ class ChineseFestivals{
         $year_arr = $this->year_arr;
         $month_day = $this->month_day;
         if($year_arr){
-            if(!empty($year_arr[$month_day])){
+            if(!empty($year_arr[$month_day])||sv::is_zero($year_arr[$month_day])){
                 $this->info = $year_arr[$month_day];
             }else{
                 $this->info = self::check_is_weekend($curr_year.$month_day)?1:0;
