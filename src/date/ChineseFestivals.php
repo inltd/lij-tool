@@ -36,7 +36,7 @@ class ChineseFestivals{
             return false;
         }
         $day_time = strtotime($date_str);
-        if(date('Ymd',$day_time)!=$date_str && date('Y-m-d')!=$date_str){
+        if(date('Ymd',$day_time)!=$date_str && date('Y-m-d',$day_time)!=$date_str){
             return false;
         }
         return true;
