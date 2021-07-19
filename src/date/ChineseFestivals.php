@@ -64,7 +64,7 @@ class ChineseFestivals{
             $this->info = self::check_is_weekend($curr_year.$month_day)?1:0;
         }
         return [
-            'status'=>$this->status,
+            'status'=>1,
             'info'=>$this->info,
             'date'=>$this->format_date_str
         ];
