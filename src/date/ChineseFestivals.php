@@ -81,19 +81,15 @@ class ChineseFestivals{
         if(empty($year)){
             $year=date('Y');
         }
-        static $cache = [];
-        if(!empty($cache[$year])){
+        $cache = [];
+        $data_file = $this->data_path.$year.'_data.json';
+        if(file_exists($data_file)){
+            $cache[$year]=json_decode(file_get_contents($data_file),true);
             $this->year_arr = $cache[$year];
         }else{
-            $data_file = $this->data_path.$year.'_data.json';
-            if(file_exists($data_file)){
-                $cache[$year]=json_decode(file_get_contents($data_file),true);
-                $this->year_arr = $cache[$year];
-            }else{
-                $this->year_arr = [
-                    $year=>[]
-                ];
-            }
+            $this->year_arr = [
+                $year=>[]
+            ];
         }
     }
 }
