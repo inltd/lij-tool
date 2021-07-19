@@ -75,7 +75,7 @@ class ChineseFestivals{
             }
         }
         $this->work_list = $work_date_list;
-        if(count($work_date_list)==5&&empty($work_date_list[6])){
+        if(count($work_date_list)==5&&!isset($work_date_list[6])){
             return [
                 'first_work_date' => $work_date_list[1],
                 'last_work_date' => $work_date_list[5]
