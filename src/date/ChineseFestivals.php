@@ -2,10 +2,12 @@
 namespace lij\date;
 use lij\str\StringVerification as sv;
 use lij\date\DateCalculation as dc;
+use lij\res\Render as render;
 
 class ChineseFestivals{
     private $data_path;
-    private $date_str;
+    //private $date_str;
+    private $date_input;
     private $status = 0;
     private $info;
     private $format_date_str;
@@ -26,8 +28,11 @@ class ChineseFestivals{
             //$this->status = 0;
             $this->info = '日期格式错误';
         }else{
+            if(sv::is_zero($this->status)){
+                $this->date_input = $date_str;
+            }
             $this->status = 1;
-            $this->date_str = $date_str;
+            //$this->date_str = $date_str;
             $day_time = strtotime($date_str);
             $this->curr_year = date('Y',$day_time);
             $this->month_day = date('md',$day_time);
@@ -51,13 +56,17 @@ class ChineseFestivals{
     public function build_date_info(){
         $next_week_workday = $this->get_next_week_work_days();
         return [
-            'date_input' => $this->date_str,
+            'date_input' => $this->date_input,
             'info' => $this->get_day_info_base(),
             'status' => $this->status,
-            'date_format' => $this->format_date_str,
+            'date_format' => date('Y-m-d',strtotime($this->date_input)),
             'first_work_date' => $next_week_workday['first_work_date'],
             'last_work_date' => $next_week_workday['last_work_date']
         ];
+    }
+    public function render_ajax(){
+        $res = new render($this->build_date_info());
+        $res->ajaxReturn();
     }
     public function get_day_info_base(){
         if(sv::is_zero($this->status)){
