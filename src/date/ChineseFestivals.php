@@ -6,7 +6,7 @@ use lij\date\DateCalculation as dc;
 class ChineseFestivals{
     private $data_path;
     private $date_str;
-    private $status;
+    private $status = 0;
     private $info;
     private $format_date_str;
     private $curr_year;
@@ -20,12 +20,13 @@ class ChineseFestivals{
     }
     public function set_date_str($date_str){
         if(empty($date_str)){
-            $this->status = 0;
+            //$this->status = 0;
             $this->info = '日期参数不正确!';
         }else if(!self::check_date_str($date_str)){
-            $this->status = 0;
+            //$this->status = 0;
             $this->info = '日期格式错误';
         }else{
+            $this->status = 1;
             $this->date_str = $date_str;
             $day_time = strtotime($date_str);
             $this->curr_year = date('Y',$day_time);
@@ -47,7 +48,22 @@ class ChineseFestivals{
         $weekend = date('N',strtotime($date_str));
         return in_array($weekend,array(6,7))?true:false;
     }
+    public function build_date_info(){
+        $next_week_workday = $this->get_next_week_work_days();
+        return [
+            'date_input' => $this->date_str,
+            'info' => $this->get_day_info_base(),
+            'status' => $this->status,
+            'date_format' => $this->format_date_str,
+            'first_work_date' => $next_week_workday['first_work_date'],
+            'last_work_date' => $next_week_workday['last_work_date']
+        ];
+    }
     public function get_day_info_base(){
+        if(sv::is_zero($this->status)){
+            return -1;
+        }
+        $this->status = 1;
         $this->set_year_data_file();
         $curr_year = $this->curr_year;
         $year_arr = $this->year_arr;
@@ -63,6 +79,12 @@ class ChineseFestivals{
         }
     }
     public function get_next_week_work_days(){
+        if(sv::is_zero($this->status)){
+            return [
+                'first_work_date' => '',
+                'last_work_date' => ''
+            ];
+        }
         $base_date = $this->format_date_str;
         $first_date = dc::get_date_add_num($base_date,7-dc::get_date_week_num($base_date));
         $work_date_list = [];
