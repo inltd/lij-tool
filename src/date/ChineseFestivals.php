@@ -82,7 +82,8 @@ class ChineseFestivals{
             ];
         }
         $keys = array_keys($work_date_list);
-        for($j=count($keys);$j>0;$j--){
+        $len = count($keys);
+        for($j=$len;$j>0;$j--){
             if($keys[$j]-1>$keys[$j-1]){
                 $last_key = $keys[$j-1];
                 break;
@@ -90,7 +91,7 @@ class ChineseFestivals{
         }
         return [
             'first_work_date' => $work_date_list[$keys[0]],
-            'last_work_date' => $work_date_list[$last_key?$last_key:$keys[0]]
+            'last_work_date' => $work_date_list[$last_key?$last_key:$keys[$len-1]]
         ];
     }
     /***
