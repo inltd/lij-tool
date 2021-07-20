@@ -87,7 +87,7 @@ class ChineseFestivals{
         }
         $base_date = $this->format_date_str;
         $weekday = dc::get_date_week_num($base_date);
-        $first_date = dc::get_date_add_num($base_date,sv::is_zero($weekday)?1:(7-$weekday));
+        $first_date = dc::get_date_add_num($base_date,sv::is_zero($weekday)?0:(7-$weekday));
         $work_date_list = [];
         $work_date = $first_date;
         for($i=1;$i<8;$i++){
