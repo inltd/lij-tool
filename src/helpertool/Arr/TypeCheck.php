@@ -1,5 +1,6 @@
 <?php
-namespace Lij\arr;
+namespace Lij\Arr;
+// use Lij\Arr\TypeCheck
 
 class TypeCheck{
     /**

@@ -25,7 +25,8 @@
         "rbsrc/dump-autoload/"
       ],
       "psr-4": {
-        "Lij\\": "src"
+        "Lij\\": "src/helpertool",
+        "Web\\":"src/webtool"
       }
     }
   }
