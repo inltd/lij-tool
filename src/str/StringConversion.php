@@ -1,5 +1,5 @@
 <?php
-namespace lij\str;
+namespace Lij\Str;
 
 /**
  * 字符串转换

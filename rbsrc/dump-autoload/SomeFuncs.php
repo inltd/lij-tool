@@ -1,5 +1,5 @@
 <?php
-namespace lij;
+namespace Lij;
 
 function a4_close(){
     exit();

@@ -25,7 +25,7 @@
         "rbsrc/dump-autoload/"
       ],
       "psr-4": {
-        "lij\\": "src"
+        "Lij\\": "src"
       }
     }
   }

@@ -1,8 +1,9 @@
 <?php
-namespace lij\date;
-use lij\str\StringVerification as sv;
-use lij\date\DateCalculation as dc;
-use lij\res\Render as render;
+namespace Lij\Date;
+
+use Lij\Str\StringVerification as sv;
+use Lij\Date\DateCalculation as dc;
+use Lij\Res\Render as render;
 
 class ChineseFestivals{
     private $data_path;

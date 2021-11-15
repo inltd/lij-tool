@@ -1,5 +1,5 @@
 <?php
-namespace lij\date;
+namespace Lij\Date;
 
 /**
  * 日期计算工具类

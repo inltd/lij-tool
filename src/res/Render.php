@@ -1,5 +1,5 @@
 <?php
-namespace lij\res;
+namespace Lij\Res;
 
 class Render{
     private $res_data;
